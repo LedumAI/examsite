@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXAM BROWSER</title>
+
+    <style>
+        .content-table{
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 2.9em;
+            min-width: 500px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .content-table thead tr{
+            background-color: #009879;
+            color: #ffffff;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .content-table th,
+        .content-table td{
+            padding: 12px 15px;
+            text-align: center;
+        }
+
+        *{
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .content-table tbody tr {
+             border-bottom: 1px solid #dddddd;
+        }
+
+        .content-table tbody tr:nth-of-type(even){
+            background-color: #f3f3f3;
+        }
+
+        .content-table tbody tr:last-of-type{
+            border-bottom: 2px solid #009879 
+        }
+
+        .header-style{
+            text-align: center;
+            font-size: 2.9em
+        }
+
+        a:link{
+            color: green;
+            background-color: transparent;
+            text-decoration: none;
+        }
+        
+        a:visited{
+            color:pink;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:hover{
+            color:red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active{
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="header-style">EXAMINATION SCHEDULE</h1>
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Course Code</th>
+                <th>Course Title</th>
+                <th>Final Exam Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GET 102</td>
+                <td>Engineering Drawing and Modelling</td>
+                <td><a href="">Begin Exam</a></td>
+            </tr>
+            <tr>
+                <td>GET 104</td>
+                <td>Introduction to Programming</td>
+                <td><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=629pK1KvCk-nfFgRZ0idTyJ5-rNbRRBAsxjy0RDnyxFURDhXMVJXMUZUVUxVTVdLODg2V1BZVlhGOC4u">Begin Exam</a></td>
+            </tr>
+            <tr>
+                <td>MCE 308</td>
+                <td>Signals and Systems</td>
+                <td><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=629pK1KvCk-nfFgRZ0idTyJ5-rNbRRBAsxjy0RDnyxFUNjNUVEY1M1ZQREQzV0lEU0hFSkJJQTFLQy4u">Begin Exam</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        const { remote } = require('electron');
+
+        document.getElementById('refresh').addEventListener('click', () => {
+            remote.getCurrentWindow().reload();
+        });
+
+        document.getElementById('exit').addEventListener('click', () => {
+            remote.getCurrentWindow().close();
+        });
+
+        // Disable text selection
+        document.addEventListener('selectstart', (e) => {
+            e.preventDefault();
+        });
+
+        // Disable copy, paste, and cut
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && ['c', 'v', 'x'].includes(e.key)) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
